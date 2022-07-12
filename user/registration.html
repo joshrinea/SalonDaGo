@@ -4,18 +4,161 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - SalonDaGo</title>
+    <title>Register - SalonDaGo</title>
+
+
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    
 </head>
 <body>
     <style>
-        .container{
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600;700&family=Raleway:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@400;500;700;900&display=swap');
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+        html, body{
+            height: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
+            background-color: #e4e4e4;
+        }
+        .container{
+            display: flex;
+            width: 900px;
+            height: 600px;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+            background-color: white;
+        }
+        .image{
+            width: 50%;
+        }
+        .image img{
+            width: 100%;
+            height: 100%;
+        }
+        .registration-box{
+            width: 50%;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+        }
+        h2{
+            margin-bottom: 50px;
+            font-weight: 800;
+            text-align: center;
+        }
+        .box{
+            position: relative;
+            width: 100%;
+            margin-bottom: 40px;
+            overflow: hidden;
+        }
+        input{
+            width: 100%;
+            border-width: 0 0 2px 0;
+            outline: none;
+            /* padding: 5px; */
+            font-size: 18px;
+            padding-left: 35px;
+            height: 30px;
+        }
+        .bx{
+            position: absolute;
+            top: 0;
+            left: 0;
+            font-size: 24px;
+        }
+        .btn-sign-up{
+            width: 100%;
+            border: none;
+            color: white;
+            font-size: 18px;
+            background-color: #222222;
+            padding: 10px 18px;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+        .btn-sign-up:hover{
+            background-color: black;
+        }
+        /* media queries */
+        @media (max-width: 670px) {
+            .image{
+                display: none;
+            }
+            .container{
+                width: 400px;
+            }
+            .registration-box{
+                width: 100%;
+                padding: 8px 16px;
+            }
+        }
+
+        @media (max-width: 320px) {
+            h2{
+                font-size: 22px;
+            }
+            input{
+                font-size: 14px;
+            }
+            .container{
+                width: 100vw;
+                padding: 20px;
+            }
+            .registration-box{
+                width: 100%;
+            }
+            .btn-sign-up{
+                font-size: 12px;
+            }
         }
     </style>
     <div class="container">
-        <h1>This is Registration Page</h1>
+        <div class="image">
+            <img src="https://images.unsplash.com/photo-1560869713-7d0a29430803?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=326&q=80" alt="SalonDaGo">
+        </div>
+        <form action="#" class="registration-box">
+            <div class="form-data">
+                <h2>SalonDaGo&copy</h2>
+
+                <div class="box">
+                    <input type="text" placeholder="Name"  required>
+                    <i class='bx bx-user'></i>
+                    <span></span>
+                </div>
+
+                <div class="box">
+                    <input type="email" placeholder="Email"  required>
+                    <i class='bx bx-envelope' ></i>
+                    <span></span>
+                </div>
+                <div class="box">
+                    <input type="tel" placeholder="Mobile" required>
+                    <i class='bx bx-mobile-alt'></i>
+                    <span></span>
+                </div>
+                <div class="box">
+                    <input type="password" placeholder="Password" required>
+                    <i class='bx bx-lock-alt' ></i>
+                    <span></span>
+                </div>
+                <div class="box">
+                    <input type="password" placeholder="Confirm Password" required>
+                    <i class='bx bx-lock-alt' ></i>
+                    <span></span>
+                </div>
+
+                <button type="button" class="btn-sign-up">Sign up</button>
+
+            </div>
+        </form>
     </div>
 </body>
 </html>
