@@ -25,7 +25,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-storage.js"></script>
 </head>
-<body>
+<body onload=" authStateListener()">
 
     <!-- start of navbar -->
     <header>
@@ -56,16 +56,15 @@
                         <a class="nav-link text-dark" href="#contact">Contact</a>
                     </li>
                 </ul>
-                <form class="form-inline mt-2 mt-md-0">
+                <form class="form-inline mt-2 mt-md-0" id="nav-icons">
                     <a class="text-dark nav-link" href="user/cart.html">
                         <i class='text-dark bx bx-shopping-bag bx-border bx-sm'></i>
                         <i style="color: rgb(255, 0, 0);" id="cart_n"></i>
                     </a>
-<!--                     <button type="button" class="btn btn-white" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <!-- <button type="button" id="btn-user-icon" class="btn btn-white" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         <i class='bx bx-user-circle bx-border bx-sm'></i>
                     </button> -->
-                    
-                    <a class="text-dark nav-link btn btn-white" href="user/index.html">
+                    <a href="user/index.html" class="text-dark nav-link btn btn-white">
                         <i class='bx bx-user-circle bx-border bx-sm'></i>
                     </a>
                 </form>
@@ -308,8 +307,8 @@
     </main>
 
     <!-- modal starts -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
+    <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" id="modalDialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title text-center" id="exampleModalLabel">Sign in</h5>
@@ -318,12 +317,12 @@
                 <div class="modal-body">
                     <h2 class="modal-text text-center m-5">SalonDaGo&copy</h2>
                     <div class="form-field col-lg-12">
-                        <input id="loginEmail" class="input-text" type="text" placeholder="Email">
-                        <!-- <label for="loginEmail" class="label">Email</label> -->
+                        <!-- login email -->
+                        <input id="loginEmail" class="input-text" type="text" placeholder="Email" required>
                     </div>
                     <div class="form-field col-lg-12">
-                        <input id="loginPassword" class="input-text" type="password" placeholder="Password">
-                        <!-- <label for="loginPassword" class="label">Password</label> -->
+                        <!-- login password -->
+                        <input id="loginPassword" class="input-text" type="password" placeholder="Password" required>
                     </div>
                     <div class="form-field">
                         <div class="col-lg-12">
@@ -339,18 +338,19 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn-login" style="width: 100px;">Login</button>
+                    <button type="button" class="btn btn-cancel" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn-login" style="width: 100px;" id="LoginBtn">Login</button>
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- modal ends -->
     
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
-    <script id="index" src="assets/script.js"></script>
+    <script id="index" src="assets/script.js" type="module"></script>
+    <!-- <script id="index" src="user/script.js" type="module"></script> -->
 </body>
 </html>
