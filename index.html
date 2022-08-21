@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SalonDaGo</title>
+
+    <!-- website icon -->
+    <link rel="shortcut icon" href="https://cdn.onlinewebfonts.com/svg/img_412894.png" type="image/x-icon">
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- icons library -->
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <!-- css -->
+    <link rel="stylesheet" href="assets/carousel.css">
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="assets/input.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+
+    <!-- FIREBASE LIBRARIES -->
+    <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-storage.js"></script>
+
+</head>
+<body>
+    <!-- start of navbar -->
+    <header>
+        <nav class="navbar bg-light navbar-expand-md  fixed-top bg-success text-dark border-bottom">
+            <a class="text-dark navbar-brand" href="#">
+                <i class='bx bx-store-alt'></i> SalonDaGo&copy
+            </a>
+            <button class="navbar-toggler bg-light text-center" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon text-dark">
+                    <i class='bx bx-menu' style="font-size: 22px;"></i>
+                </span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto menu">
+                    <li class="nav-item active">
+                        <a class="nav-link text-secondary" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="#products">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="#contact">Contact</a>
+                    </li>
+                </ul>
+                <form class="form-inline mt-2 mt-md-0" id="nav-icons">
+                    <a class="text-dark nav-link" href="user/cart.html">
+                        <i class='text-dark bx bx-shopping-bag bx-border bx-sm'></i>
+                        <i style="color: rgb(255, 0, 0);" id="cart_n"></i>
+                    </a>
+                    <button type="button" id="btn-user-icon" class="btn btn-white" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="padding: 10px;">
+                        <i class='bx bx-user-circle bx-border bx-sm'></i>
+                    </button>
+                </form>
+            </div>
+        </nav>
+    </header>
+    <!-- end of navbar -->
+
+    <main role="main">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li style="z-index: 102;" data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li style="z-index: 102;" data-target="#myCarousel" data-slide-to="1"></li>
+                <li style="z-index: 102;" data-target="#myCarousel" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="imgFilter first-slide" 
+                    src="https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1011&q=80" 
+                    alt="First Slide">
+                    <div class="container">
+                        <div class="carousel-caption">
+                            <h1>SalonDaGo&copy</h1>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae velit tempora sapiente. Facere sapiente doloribus facilis expedita sint molestias dolorum dolor harum, tempora atque, placeat a esse perferendis asperiores optio tempore! Porro eligendi debitis iste?</p>
+                            <p><a role="button" class="btn btn-lg btn-light" href="#contact">BOOK WITH US</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <img class="imgFilter second-slide" 
+                    src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" 
+                    alt="Second Slide">
+                    <div class="container">
+                        <div class="carousel-caption text-left">
+                            <h1>SalonDaGo&copy</h1>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae velit tempora sapiente. Facere sapiente doloribus facilis expedita sint molestias dolorum dolor harum, tempora atque, placeat a esse perferendis asperiores optio tempore! Porro eligendi debitis iste?</p>
+                            <p><a role="button" class="btn btn-lg btn-light" href="#contact">BOOK WITH US</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <img class="imgFilter third-slide" 
+                    src="https://images.unsplash.com/photo-1600948836101-f9ffda59d250?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=836&q=80" 
+                    alt="Third Slide">
+                    <div class="container">
+                        <div class="carousel-caption text-right">
+                            <h1>SalonDaGo&copy</h1>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae velit tempora sapiente. Facere sapiente doloribus facilis expedita sint molestias dolorum dolor harum, tempora atque, placeat a esse perferendis asperiores optio tempore! Porro eligendi debitis iste?</p>
+                            <p><a role="button" class="btn btn-lg btn-light" href="#contact">BOOK WITH US</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <a style="z-index: 101;" class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev" >
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a style="z-index: 101;" class="carousel-control-next" href="#myCarousel" role="button" data-slide="next" >
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+
+        <!-- about us starts -->
+        <div class="container marketing" id="about">
+            <h1 style="font-weight: bold; text-align: center; color: #222222;"><span >About us</span></h1>
+            <div class="container">
+                <div class="row mt-5">
+                    <div class="col-md-6">
+                        <div class="outer-container">
+                            <div class="inner-container">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="text-justify">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab dolorem enim, officia quis nulla illum libero necessitatibus 
+                            consequuntur nobis quos perferendis autem odio facere. Fuga dignissimos, 
+                            tempora rem optio natus repellat similique recusandae culpa deleniti dolorem ipsum explicabo voluptatum sapiente.
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab dolorem enim, officia quis nulla illum libero necessitatibus 
+                            consequuntur nobis quos perferendis autem odio facere. Fuga dignissimos.
+                        </p>
+                        <p class="text-justify">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab dolorem enim, officia quis nulla illum libero necessitatibus 
+                            consequuntur nobis quos perferendis autem odio facere. Fuga dignissimos, 
+                            tempora rem optio natus repellat similique recusandae culpa deleniti dolorem ipsum explicabo voluptatum sapiente.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- about us ends -->
+
+        <div class="container marketing">
+            <br>
+            <h2 id="services">Services</h2>
+            <hr>
+            <div class="row" id="ServicesDiv"></div>
+
+            <br>
+            <h2 id="products">Products</h2>
+            <hr>
+            <div class="row" id="ProductsDiv"></div>
+
+            <!-- contact us section -->
+            <h2 id="contact" style="text-align: center; margin-top: 50px; padding: 20px 10px; background-color: #f1f1f1;">Contact Us</h2>
+            <hr>
+            <div class="container">
+                <div class="contact-form row" id="contactDiv">
+                    <!-- first name -->
+                    <div class="form-field col-lg-6">
+                        <input id="first_name" class="input-text" type="text" style="text-transform: capitalize;">
+                        <label for="first_name" class="label">First Name</label>
+                    </div>
+                    <!-- last name -->
+                    <div class="form-field col-lg-6">
+                        <input id="last_name" class="input-text" type="text" style="text-transform: capitalize;">
+                        <label for="last_name" class="label">Last Name</label>
+                    </div>
+                    <!-- email -->
+                    <div class="form-field col-lg-12">
+                        <input id="email" class="input-text" type="text">
+                        <label for="email" class="label">Email</label>
+                    </div>
+                    <!-- message -->
+                    <div class="form-field col-lg-12">
+                        <input id="message" class="input-text" type="text">
+                        <label for="message" class="label">Message</label>
+                    </div>
+                    <!-- button -->
+                    <div class="form-field col-lg-6">
+                        <input type="submit" class="submit-btn" value="Submit" >
+                    </div>
+                </div>
+            </div>
+            <!-- contact us section ends -->
+            <hr class="featurette-divider">
+        </div>
+        <footer class="footer-contianer pt-5 pb-5">
+            <div class="container text-center text-md-left">
+                <div class="row text-center text-md-left">
+                    <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                        <h5 class="text-uppercase mb-4 font-weight-bold">
+                            <a href="#" style="text-decoration: none;" class="text-white">SalonDaGo&copy</a>
+                        </h5>
+                        <p class="text-secondary">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda architecto hic aperiam odit, non,
+                            est necessitatibus dicta laudantium! Expedita consequuntur ut corporis sint explicabo voluptatem hic?
+                        </p>
+                    </div>
+
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                        <h5 class="text-uppercase mb-4 font-weight-bold text-white">Products</h5>
+                        <p>
+                            <a href="#" class="text-secondary" style="text-decoration: none;">Providers</a>
+                        </p>
+                        <p>
+                            <a href="#" class="text-secondary" style="text-decoration: none;">Creativity</a>
+                        </p>
+                        <p>
+                            <a href="#" class="text-secondary" style="text-decoration: none;">SourceFiles</a>
+                        </p>
+                        <p>
+                            <a href="#" class="text-secondary" style="text-decoration: none;">SalonDaGo</a>
+                        </p>
+                    </div>
+
+                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+                        <h5 class="text-uppercase mb-4 font-weight-bold text-white">Useful Links</h5>
+                        <p>
+                            <a href="#" class="text-secondary" style="text-decoration: none;" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Account</a>
+                        </p>
+                        <p>
+                            <a href="#" class="text-secondary" style="text-decoration: none;">Become a member</a>
+                        </p>
+                        <p>
+                            <a href="#" class="text-secondary" style="text-decoration: none;">Rates</a>
+                        </p>
+                        <p>
+                            <a href="#" class="text-secondary" style="text-decoration: none;">Help</a>
+                        </p>
+                    </div>
+
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+                        <h5 class="text-uppercase mb-4 font-weight-bold text-white">Contact</h5>
+                        <p>
+                            <a href="#" class="text-secondary" style="text-decoration: none;"><i class='bx bxs-home'></i> Malabon City, Philippines</a>
+                        </p>
+                        <p>
+                            <a href="#" class="text-secondary" style="text-decoration: none;"><i class='bx bxs-envelope' ></i> salonDaGo@gmail.com</a>
+                        </p>
+                        <p>
+                            <a href="#" class="text-secondary" style="text-decoration: none;"><i class='bx bxs-phone'></i> +639-12344652</a>
+                        </p>
+                        <p>
+                            <a href="#" class="text-secondary" style="text-decoration: none;"><i class='bx bxs-printer' ></i> +01 335 633 77</a>
+                        </p>
+                    </div>
+                </div>
+                <hr class="mb-4">
+                <div class="row align-items-center">
+                    <div class="col-md-7 col-lg-8">
+                        <p class="text-white">Copyright 2022 
+                            <a href="#" style="text-decoration: none;">
+                                <strong class="text-white">
+                                    SalonDaGo&copy
+                                </strong>
+                            </a>
+                        </p>
+                    </div>
+                    <div class="col-md-5 col-lg-4">
+                        <div class="text-center text-md-right">
+                            <ul class="list-unstyled list-inline">
+                                <li class="list-inline-item">
+                                    <a href="#" class="btn-floating btn-sm text-white" style="font-size: 24px;">
+                                        <i class='bx bxl-facebook-square'></i>
+                                    </a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#" class="btn-floating btn-sm text-white" style="font-size: 24px;">
+                                        <i class='bx bxl-instagram'></i>
+                                    </a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#" class="btn-floating btn-sm text-white" style="font-size: 24px;">
+                                        <i class='bx bxl-twitter' ></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </footer>
+    </main>
+
+    <!-- login modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Sign in</h5>
+                    <button type="button" class="btn btn-close" data-bs-dismiss="modal" aria-label="Close" style="border: none; cursor: pointer;">X</button>
+                </div>
+                <div class="modal-body">
+                    <h3 class="text-center" style="margin-bottom: -25px;">SalonDaGo</h3>
+                    <div class="form">
+                        <form action="" class="form__content">
+                            <div class="form__box">
+                                <input type="email" class="form__input" placeholder="Enter Email" id="loginEmail" required>
+                                <label for="" class="form__label">ENTER EMAIL</label>
+                                <div class="form__shadow"></div>
+                            </div>
+                            <div class="form__box">
+                                <input type="password" class="form__input" placeholder="Enter Password" id="loginPassword" required>
+                                <label for="" class="form__label">ENTER PASSWORD</label>
+                                <div class="form__shadow"></div>
+                            </div>
+                            <p class="form-control" style="border: none; margin-top: -20px; margin-left: -10px;">
+                                <a href="#">Forgot Password? </a>
+                            </p>
+                        </form>
+                        
+                    </div>
+                    <p class="text-center" style="margin-top: -20px;">
+                        Don`t have an account yet?
+                    </p>
+                    <p class="text-center" style="margin-top: -20px;">
+                        Register <a href="#" data-bs-toggle="modal" data-bs-target="#registerExampleModal" data-bs-dismiss="modal">Here.</a>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <div class="form__button">
+                        <input type="Submit" class="form__cancel" value="Close" data-bs-dismiss="modal">
+                    </div>
+                    <!-- <div class="form__button">
+                        <input type="Submit" class="form__submit" value="Sign in">
+                    </div> -->
+                    <div class="form__button">
+                        <button type="submit" class="form__submit" id="btnSignin" style="outline: none;">Sign in</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- login modal end -->
+      
+    <!-- registration modal starts -->
+    <div class="modal fade" id="registerExampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Sign Up</h5>
+                    <button type="button" class="btn btn-close" data-bs-dismiss="modal" aria-label="Close" style="border: none; cursor: pointer;">X</button>
+                </div>
+                <div class="modal-body container-fluid">
+                    <h3 class="text-center">SalonDaGo</h3>
+                    <div class="row mt-2">
+                        <div class="col-md-6">
+                            <label class="form-label">First Name: </label>
+                            <input type="text" id="registrationFirstName" class="form-control form-input" placeholder="First Name" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Last Name: </label>
+                            <input type="text" id="registrationLastName" class="form-control form-input" placeholder="Last Name" required>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-12 mb-3">
+                            <label class="form-label">Mobile: </label>
+                            <input type="tel" id="registrationMobile" class="form-control form-input" placeholder="Mobile" required>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <label class="form-label">Email: </label>
+                            <input type="email" id="registrationEmail" class="form-control form-input" placeholder="Email" required>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <label class="form-label">Password: </label>
+                            <input type="password" id="registrationPassword" class="form-control form-input" placeholder="Password" required>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="modal-footer">
+                    <div class="form__button">
+                        <input type="Submit" class="form__cancel" value="Cancel" data-bs-dismiss="modal">
+                    </div>
+                    <div class="form__button">
+                        <!-- <input type="submit" class="form__submit" value="Sign up"> -->
+                        <button type="submit" class="form__submit" id="btnSignup" style="outline: none;">Sign up</button>
+                    </div>
+                 </div>
+            </div>
+        </div>
+    </div>
+    <!-- registration modal ends -->
+
+    <!-- view specific product modal starts -->
+    <div class="modal fade" id="staticBackdropProduct" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content" id="modal_content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">SalonDaGo</h5>
+                    <button type="button" class="btn btn-close" data-bs-dismiss="modal" aria-label="Close" style="border: none; cursor: pointer;">X</button>
+                </div>
+                <div class="modal-body" id="modalProductID">
+                    
+                </div>
+                <div class="modal-footer">
+                    <div class="form__button">
+                        <input type="Submit" class="form__cancel" value="Close" data-bs-dismiss="modal">
+                    </div>
+                    <div class="form__button">
+                        <button type="submit" class="form__submit" id="btnSignin" style="outline: none;">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- view specific product modal ends -->
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+    <script id="index" src="assets/script.js"></script>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.1/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.9.1/firebase-analytics.js";
+        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.9.1/firebase-auth.js"
+        import { getDatabase, ref, set, child, get } from "https://www.gstatic.com/firebasejs/9.9.1/firebase-database.js";
+
+        const firebaseConfig = {
+          apiKey: "AIzaSyAAPLiZplwjx5mN3NQdcJSkj8lXMLjtBYg",
+          authDomain: "salondago-4a11c.firebaseapp.com",
+          databaseURL: "https://salondago-4a11c-default-rtdb.asia-southeast1.firebasedatabase.app",
+          projectId: "salondago-4a11c",
+          storageBucket: "salondago-4a11c.appspot.com",
+          messagingSenderId: "969864103293",
+          appId: "1:969864103293:web:ab223a4619c2bbfc55b814",
+          measurementId: "G-G5WG31LRZR"
+        };
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const auth = getAuth();
+        const database = getDatabase(app);
+
+        const submitData = document.getElementById('btnSignup');
+        submitData.addEventListener('click', (e) => {
+            const firstName = document.getElementById('registrationFirstName').value;
+            const lastName = document.getElementById('registrationLastName').value;
+            const mobile = document.getElementById('registrationMobile').value;
+            const email = document.getElementById('registrationEmail').value;
+            const password = document.getElementById('registrationPassword').value;
+
+            createUserWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    const userId = userCredential.user;
+                    // store user data in real time database
+                    set(ref(database, 'users/' + userId.uid), {
+                        first_name: firstName,
+                        last_name: lastName,
+                        mobile: mobile,
+                        email: email,
+                        password: password,
+                        avatar: ''
+                    })
+                    .then(() => {
+                        alert("You are now registered!");
+                        document.getElementById('registrationFirstName').value = "";
+                        document.getElementById('registrationLastName').value = "";
+                        document.getElementById('registrationMobile').value = "";
+                        document.getElementById('registrationEmail').value = "";
+                        document.getElementById('registrationPassword').value = "";
+                    })
+                    .catch((error) => {
+                        alert(error);
+                    });
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    alert(errorMessage);
+                });
+        })
+        
+    </script>
+    
+</body>
+</html>
