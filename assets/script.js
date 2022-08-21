@@ -26,7 +26,7 @@ servicesRef.once('value', (snapshot) => {
                         <p class="card-text" style="font-size: 12px;">${childData.description}</p>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
-                                <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdropProduct" onclick="ShowService('${childKey}', '${childData.link}', '${childData.price}', '${childData.service_name}', '${childData.description}')
+                                <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdropServices" onclick="ShowService('${childKey}', '${childData.link}', '${childData.price}', '${childData.service_name}', '${childData.description}')
                                 " class="btn btn-sm btn-outline-dark">Book now</button>
                             </div>
                         </div>
@@ -82,17 +82,32 @@ function ShowProduct(key, link, price, service_name, description){
     `
 }
 
+
 function ShowService(key, link, price, service_name, description){
-    document.getElementById('modal_content').innerHTML = `
-        <div class="row">
-            <div class="col-md-5" >
-                <img src='${link}' style="max-width: 100%; height: 300px;  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;">
+    document.getElementById('modalServicesID').innerHTML = `
+        <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">${service_name}</h5>
+            <button type="button" class="btn btn-close" data-bs-dismiss="modal" aria-label="Close" style="border: none; cursor: pointer;">X</button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-md-5" >
+                    <img src='${link}' style="max-width: 100%; height: 300px;  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;">
+                </div>
+                <div class="col-md-7">
+                    <span style="display: none;">${key}</span>
+                    <p class="label label-warning" style="text-transform: uppercase; font-size: 20px;"><b>${service_name}</b></p>
+                    <span ><b>Price:</b> ${price}</span> <br>
+                    <span><b>Description:</b> ${description}</span>
+                </div>
             </div>
-            <div class="col-md-7">
-                <span style="display: none;">${key}</span>
-                <p class="label label-warning" style="text-transform: uppercase; font-size: 20px;"><b>${service_name}</b></p>
-                <span ><b>Price:</b> ${price}</span> <br>
-                <span><b>Description:</b> ${description}</span>
+            <div class="modal-footer">
+                <div class="form__button">
+                    <input type="Submit" class="form__cancel" value="Close" data-bs-dismiss="modal">
+                </div>
+                <div class="form__button">
+                    <button type="submit" class="form__submit" id="btnSignin" style="outline: none;">Add to Cart</button>
+                </div>
             </div>
         </div>
     `
