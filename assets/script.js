@@ -67,7 +67,7 @@ productsRef.once('value', (snapshot) => {
 
 
 function ShowProduct(key, link, price, service_name, description){
-    document.getElementById('modalProductID').innerHTML = `
+    document.getElementById('modalProductID').innerHTML += `
         <div class="row">
             <div class="col-md-5" >
                 <img src='${link}' style="max-width: 100%; height: 300px;  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;">
@@ -84,7 +84,7 @@ function ShowProduct(key, link, price, service_name, description){
 
 
 function ShowService(key, link, price, service_name, description){
-    document.getElementById('modalServicesID').innerHTML = `
+    document.getElementById('modalServicesID').innerHTML += `
         <div class="modal-header">
             <h5 class="modal-title" id="staticBackdropLabel">${service_name}</h5>
             <button type="button" class="btn btn-close" data-bs-dismiss="modal" aria-label="Close" style="border: none; cursor: pointer;">X</button>
